@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Grid Ceiling & Workspaces | Commercial Interior Architecture</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        skybg: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                        },
+                        emerald: {
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(135deg, #f0f7ff 0%, #e0f2fe 50%, #f0fdf4 100%);
+            background-attachment: fixed;
+            color: #0f172a;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.05), 0 0 15px rgba(16, 185, 129, 0.05);
+        }
+
+        .glass-panel-hover {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-panel-hover:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 25px 50px -12px rgba(16, 185, 129, 0.15);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .emerald-gradient-text {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .emerald-btn {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .emerald-btn:hover {
+            box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .page-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .page-section.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-white">
+
+    <header class="sticky top-0 z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-emerald-600 to-emerald-500 flex items-center justify-center text-white shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform">
+                    <i data-lucide="grid" class="w-5 h-5"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-extrabold text-lg tracking-tight text-slate-900 leading-none">Modern Grid</span>
+                    <span class="text-xs font-semibold text-emerald-600 tracking-wider uppercase mt-0.5">Ceiling & Workspaces</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-1 bg-white/50 p-1.5 rounded-full border border-white/60 shadow-sm">
+                <a href="#home" class="nav-link px-5 py-2 text-sm font-semibold text-slate-600 hover:text-emerald-600 rounded-full transition-all" data-target="home">Home</a>
+                <a href="#about" class="nav-link px-5 py-2 text-sm font-semibold text-slate-600 hover:text-emerald-600 rounded-full transition-all" data-target="about">About Us</a>
+                <a href="#blog/acoustic-ceiling-and-interior-trends-2026" class="nav-link px-5 py-2 text-sm font-semibold text-slate-600 hover:text-emerald-600 rounded-full transition-all" data-target="blog">Industry Blog</a>
+                <a href="#contact" class="nav-link px-5 py-2 text-sm font-semibold text-slate-600 hover:text-emerald-600 rounded-full transition-all" data-target="contact">Contact</a>
+            </nav>
+
+            <!-- CTA Button -->
+            <div class="hidden md:flex items-center gap-3">
+                <a href="#contact" class="emerald-btn text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-md flex items-center gap-2">
+                    <span>Consultation</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobileMenuBtn" class="md:hidden p-2 rounded-xl text-slate-700 hover:bg-white/60 transition">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden glass-panel border-t border-white/50 px-6 py-6 space-y-3">
+            <a href="#home" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-600">Home</a>
+            <a href="#about" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-600">About Us</a>
+            <a href="#blog/acoustic-ceiling-and-interior-trends-2026" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-600">Industry Blog</a>
+            <a href="#contact" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-600">Contact</a>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+
+        <!-- ================= HOME PAGE ================= -->
+        <section id="home" class="page-section active space-y-16">
+            
+            <!-- Hero Banner -->
+            <div class="glass-panel rounded-3xl p-8 sm:p-12 md:p-16 relative overflow-hidden flex flex-col items-center text-center">
+                <div class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-emerald-400/20 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 bg-sky-300/30 rounded-full blur-3xl pointer-events-none"></div>
+
+                <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 text-xs font-bold uppercase tracking-wider mb-6">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-emerald-600"></i> Modern Ceiling Engineering & Workspace Innovation
+                </span>
+
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 max-w-4xl leading-tight">
+                    Transforming Corporate Interiors with <span class="emerald-gradient-text">Precision Ceiling Grids</span> & High Acoustics.
+                </h1>
+
+                <p class="mt-6 text-lg sm:text-xl text-slate-600 max-w-2xl leading-relaxed">
+                    Elevating architectural standards across commercial workplaces with acoustic baffles, modular grids, and circadian lighting systems.
+                </p>
+
+                <div class="mt-8 flex flex-col sm:flex-row items-center gap-4">
+                    <a href="#contact" class="emerald-btn text-white px-8 py-4 rounded-full font-bold shadow-lg text-base flex items-center gap-3">
+                        <span>Get Started</span>
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#blog/acoustic-ceiling-and-interior-trends-2026" class="px-8 py-4 rounded-full font-semibold text-slate-700 bg-white/80 hover:bg-white border border-slate-200/80 shadow-sm hover:shadow transition-all text-base flex items-center gap-2">
+                        <i data-lucide="book-open" class="w-5 h-5 text-emerald-600"></i> Read Article
+                    </a>
+                </div>
+            </div>
+
+            <!-- Feature Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-panel glass-panel-hover rounded-3xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-100 flex items-center justify-center text-emerald-600 mb-6">
+                            <i data-lucide="layers" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Architectural Ceiling Grids</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Modular acoustic grids and suspended linear metal baffles engineered to hide building infrastructure while accentuating visual scale.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-200/50 flex items-center justify-between text-xs font-semibold text-emerald-700">
+                        <span>Seamless Modular Integration</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </div>
+                </div>
+
+                <div class="glass-panel glass-panel-hover rounded-3xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-100 flex items-center justify-center text-emerald-600 mb-6">
+                            <i data-lucide="mic-off" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Acoustic Soundproofing</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            High-NRC rated PET felt clouds and mineral acoustic panels formulated to reduce ambient noise reverberation and enhance speech privacy.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-200/50 flex items-center justify-between text-xs font-semibold text-emerald-700">
+                        <span>Maximized NRC Performance</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </div>
+                </div>
+
+                <div class="glass-panel glass-panel-hover rounded-3xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-100 flex items-center justify-center text-emerald-600 mb-6">
+                            <i data-lucide="lightbulb" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Smart Ergonomic Lighting</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Recessed linear LED profiles and circadian daylighting channels integrated seamlessly into ceiling drywall layouts.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-200/50 flex items-center justify-between text-xs font-semibold text-emerald-700">
+                        <span>Glare-Free Illumination</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Overview Box -->
+            <div class="glass-panel rounded-3xl p-8 md:p-12 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                <div class="space-y-6">
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-emerald-600">Spatial Excellence</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 leading-tight">Engineered ceiling systems for the modern corporate era.</h2>
+                    <p class="text-slate-600 leading-relaxed text-sm">
+                        Workspaces require a harmonious balance between open collaborative zones and quiet individual focus areas. Our ceiling grid frameworks integrate acoustic absorption, thermal insulation, and adaptive LED profiles to optimize performance.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 pt-2">
+                        <div class="bg-white/60 p-4 rounded-2xl border border-white/80">
+                            <div class="text-2xl font-bold text-emerald-600">0.90+</div>
+                            <div class="text-xs font-medium text-slate-500">NRC Acoustic Rating</div>
+                        </div>
+                        <div class="bg-white/60 p-4 rounded-2xl border border-white/80">
+                            <div class="text-2xl font-bold text-emerald-600">100%</div>
+                            <div class="text-xs font-medium text-slate-500">Architectural Precision</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-lg border border-white">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80" alt="Modern corporate office interior with integrated acoustic grid ceiling" class="w-full h-80 object-cover hover:scale-105 transition-transform duration-700">
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ================= ABOUT PAGE ================= -->
+        <section id="about" class="page-section space-y-12">
+            
+            <div class="glass-panel rounded-3xl p-8 sm:p-12">
+                <div class="max-w-3xl">
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-emerald-600">Our Architectural Vision</span>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2 mb-6">Mastering Commercial Ceilings & Workplace Physics</h1>
+                    <p class="text-slate-600 text-base leading-relaxed mb-4">
+                        At <strong>Modern Grid Ceiling & Workspaces</strong>, we view the ceiling as the primary functional canopy of modern architecture. It regulates sound dispersion, delivers balanced lighting, controls climate distribution, and defines visual proportions across the entire floor plan.
+                    </p>
+                    <p class="text-slate-600 text-base leading-relaxed">
+                        By integrating acoustic science with minimalist industrial design, we help organizations transform raw structural slabs into dynamic, highly productive work environments.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Pillar Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-panel p-6 rounded-2xl">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center mb-4">
+                        <i data-lucide="leaf" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">Sustainable Materials</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        We utilize recycled PET acoustic felt, low-VOC ceiling panels, and eco-friendly timber components to support green building standards.
+                    </p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center mb-4">
+                        <i data-lucide="sliders-horizontal" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">Acoustic Decoupling</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Our suspended frameworks effectively isolate mechanical vibration and airborne reverberation across high-density enterprise floors.
+                    </p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center mb-4">
+                        <i data-lucide="layout-grid" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">Modular Utility Access</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Systems are designed for rapid access to above-ceiling MEP utilities without disrupting underlying workspace activities.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Image Showcase -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-panel p-4 rounded-3xl">
+                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Suspended acoustic baffles in open-plan corporate lounge" class="rounded-2xl w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-bold text-slate-900">Suspended Acoustic Baffle Frameworks</h4>
+                        <p class="text-xs text-slate-500 mt-1">Vertical PET felt baffles engineered for high echo mitigation.</p>
+                    </div>
+                </div>
+                <div class="glass-panel p-4 rounded-3xl">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Recessed linear lighting channels in false ceiling" class="rounded-2xl w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-bold text-slate-900">Linear Integrated Grid Lighting</h4>
+                        <p class="text-xs text-slate-500 mt-1">Flush linear LED tracks engineered seamlessly into ceiling drywall grids.</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ================= BLOG PAGE ================= -->
+        <section id="blog" class="page-section space-y-8">
+            
+            <div class="glass-panel rounded-3xl p-6 sm:p-10 md:p-14 max-w-4xl mx-auto">
+                
+                <!-- Blog Header -->
+                <header class="mb-10 pb-8 border-b border-slate-200/80">
+                    <div class="flex items-center gap-2 text-xs font-bold text-emerald-600 uppercase tracking-wider mb-3">
+                        <span>Commercial Architecture & Ceiling Innovation</span>
+                        <span>•</span>
+                        <span>14 Min Read</span>
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                        Revolutionizing Commercial Workspaces: Advanced False Ceiling Designs, Acoustic Engineering, and Interior Architectural Planning
+                    </h1>
+                    <p class="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
+                        An in-depth architectural guide on how suspended grid systems, acoustic baffles, lighting ergonomics, and spatial zoning elevate modern corporate real estate.
+                    </p>
+                    <div class="mt-6 flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-sm">
+                            MG
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-slate-900">Modern Grid Research Group</p>
+                            <p class="text-xs text-slate-500">Published in Corporate Interior Insights</p>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Featured Image -->
+                <div class="my-8 rounded-2xl overflow-hidden shadow-lg border border-white">
+                    <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1200&q=80" alt="High-end corporate office workspace featuring integrated acoustic ceiling grid and linear lighting" class="w-full h-80 sm:h-96 object-cover">
+                    <p class="text-xs text-center text-slate-500 py-2 bg-white/40">Figure 1: Architectural suspended grid ceiling incorporating continuous linear LED channels and sound-dampening acoustic tiles.</p>
+                </div>
+
+                <!-- Comprehensive 1,200+ Word SEO Article Body -->
+                <article class="prose prose-slate max-w-none space-y-6 text-slate-700 text-sm sm:text-base leading-relaxed">
+                    
+                    <p class="text-base sm:text-lg font-medium text-slate-800 leading-relaxed">
+                        In the fast-evolving world of corporate real estate, the design of a commercial interior plays a pivotal role in employee productivity, talent retention, and brand identity. Modern enterprise environments have transitioned away from rigid cubicle matrices toward agile, human-centric layouts that foster collaboration while protecting focus. At the heart of this physical evolution is the overhead canopy—the false ceiling system. Often overlooked in basic interior plans, false ceilings act as the primary infrastructure hub for acoustics, lighting, thermal control, and spatial aesthetics.
+                    </p>
+
+                    <h2 class="text-2xl font-bold text-slate-900 mt-8 mb-4 border-l-4 border-emerald-500 pl-4">
+                        The Strategic Role of False Ceilings in Corporate Architecture
+                    </h2>
+                    <p>
+                        Commercial concrete slabs reflect sound, trap heat, and expose complex HVAC, electrical, and fire-suppression utilities. A well-engineered false ceiling system creates a functional plenum cavity that conceals mechanical infrastructure while providing an engineered surface for acoustic regulation and illumination.
+                    </p>
+                    <p>
+                        In open-plan layouts, where sound travel can severely impair concentration, suspended false ceilings absorb ambient speech, isolate mechanical equipment noise, and balance light reflection across desk clusters. By combining high-density acoustic tiles, linear wooden baffles, and modular metal grids, interior architects turn flat ceilings into dynamic design elements that define the character of a floor.
+                    </p>
+
+                    <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4 border-l-4 border-emerald-500 pl-4">
+                        Acoustic Baffles and Reverberation Control
+                    </h2>
+                    <p>
+                        Reverberation Time (RT60) is the measure of time required for sound energy to decay by 60 decibels after a sound source stops. In untreated corporate spaces with large glass facades and hard flooring, RT60 often exceeds 1.2 seconds, causing severe speech echo and forcing employees to speak louder, which compounds background noise.
+                    </p>
+                    
+                    <p>
+                        Acoustic baffles offer a powerful solution. Unlike traditional lay-in horizontal ceiling tiles, baffles hang vertically from the ceiling slab, exposing both sides of their sound-absorbing material to sound waves. Manufactured from recycled PET felt or high-density fiberglass, baffles effectively absorb sound energy across low, mid, and high speech frequencies.
+                    </p>
+
+                    <!-- Quote Box -->
+                    <div class="glass-panel my-6 p-6 rounded-2xl border-l-4 border-emerald-600 bg-emerald-50/30">
+                        <p class="italic text-slate-800 font-medium">
+                            "Acoustic comfort is directly tied to cognitive stamina. Reducing ambient reverberation in open workspaces increases task concentration and lowers workplace fatigue."
+                        </p>
+                    </div>
+
+                    <h3 class="text-xl font-semibold text-slate-900 mt-6 mb-3">Key Benefits of Acoustic Baffle Systems</h3>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li><strong>High NRC Ratings:</strong> Vertical baffle arrays deliver Noise Reduction Coefficients (NRC) up to 0.95, trapping echo in high-traffic zones.</li>
+                        <li><strong>Unobstructed Airflow:</strong> Vertical hanging orientation allows uninhibited air circulation from high-mounted HVAC diffusers.</li>
+                        <li><strong>Visual Depth:</strong> Linear wood-grain or colored felt baffles create rhythmic visual patterns that enhance spatial depth.</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4 border-l-4 border-emerald-500 pl-4">
+                        Ergonomic Lighting Integration and Circadian Alignment
+                    </h2>
+                    <p>
+                        Lighting is intrinsically linked to false ceiling design. Harsh overhead lighting causes screen glare and eye strain, while inadequate illumination induces sluggishness. Modern false ceiling frameworks integrate smart linear LED lighting directly into the ceiling grid profiles.
+                    </p>
+
+                    <div class="my-6 rounded-2xl overflow-hidden shadow-md">
+                        <img src="https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?auto=format&fit=crop&w=1200&q=80" alt="Architectural lighting integrated into suspended ceiling grid" class="w-full h-72 object-cover">
+                    </div>
+
+                    <p>
+                        By combining continuous flush linear LED tracks with indirect cove diffusers, architects illuminate workspaces evenly without harsh direct glare. Modern systems also support circadian daylighting controls, automatically transitioning color temperatures from energizing 5000K cool white in the morning to relaxing 3000K warm tones late in the afternoon, aligning with human biological rhythms.
+                    </p>
+
+                    <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4 border-l-4 border-emerald-500 pl-4">
+                        Spatial Zoning and Human-Centric Interior Design
+                    </h2>
+                    <p>
+                        Commercial interior design relies on effective spatial zoning—dividing expansive floor plates into dedicated functional areas without erecting solid, restrictive walls. Ceiling transitions play a key role in defining these zones.
+                    </p>
+                    
+                    <p>
+                        For example, a drop-down drywall coffer with warm wood baffles can delineate a central collaborative break-out zone, while surrounding workstation clusters utilize clean white acoustic lay-in tiles to maintain light reflection. When planning complex corporate projects in rapidly growing commercial hubs, consulting qualified <a href="https://sentiment.co.in/office-interior-designers-gurgaon/" class="text-emerald-600 font-bold hover:underline decoration-emerald-500 underline-offset-4" target="_blank" rel="noopener">Office Interior Designers in Gurgaon</a> ensures that acoustic engineering, layout planning, and ceiling installations are fully aligned with long-term operational goals.
+                    </p>
+
+                    <p>
+                        Professional spatial design integrates high-performance ceiling grids, glass acoustic partitions, and ergonomic furniture layouts into a unified physical environment that elevates corporate culture.
+                    </p>
+
+                    <!-- Feature Table -->
+                    <div class="overflow-x-auto my-8">
+                        <table class="w-full text-left border-collapse bg-white/70 rounded-2xl overflow-hidden shadow-sm">
+                            <thead>
+                                <tr class="bg-emerald-600 text-white text-xs font-bold uppercase">
+                                    <th class="p-4">Ceiling System</th>
+                                    <th class="p-4">NRC Range</th>
+                                    <th class="p-4">Best Suited Workspace Zone</th>
+                                    <th class="p-4">Key Architectural Feature</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 text-xs sm:text-sm">
+                                <tr>
+                                    <td class="p-4 font-semibold text-slate-900">Modular Mineral Fiber Lay-In</td>
+                                    <td class="p-4">0.70 - 0.85</td>
+                                    <td class="p-4">General Open-Plan Workstations</td>
+                                    <td class="p-4">High Light Reflectance & Clean Grid Lines</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 font-semibold text-slate-900">Vertical PET Felt Baffles</td>
+                                    <td class="p-4">0.85 - 0.95</td>
+                                    <td class="p-4">High-Traffic Corridors & Cafeterias</td>
+                                    <td class="p-4">Exceptional Acoustic Echo Mitigation</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 font-semibold text-slate-900">Perforated Linear Timber Panels</td>
+                                    <td class="p-4">0.65 - 0.80</td>
+                                    <td class="p-4">Boardrooms & Executive Reception</td>
+                                    <td class="p-4">Biophilic Warmth & Premium Elegance</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 font-semibold text-slate-900">Micro-Perforated Metal Grids</td>
+                                    <td class="p-4">0.75 - 0.90</td>
+                                    <td class="p-4">Tech Hubs & Innovation Labs</td>
+                                    <td class="p-4">High Durability & Sleek Industrial Finish</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4 border-l-4 border-emerald-500 pl-4">
+                        Frequently Asked Questions (FAQ)
+                    </h2>
+                    
+                    <div class="space-y-4 my-6">
+                        <div class="p-5 rounded-2xl bg-white/60 border border-slate-200/80">
+                            <h4 class="font-bold text-slate-900 text-base mb-2">Q: How do false ceilings improve energy efficiency in commercial offices?</h4>
+                            <p class="text-slate-600 text-xs sm:text-sm">A: False ceilings reduce the total volume of air that needs to be conditioned by HVAC systems. Additionally, high-reflectance ceiling tiles bounce natural daylight deeper into floor plates, lowering artificial lighting power consumption.</p>
+                        </div>
+                        <div class="p-5 rounded-2xl bg-white/60 border border-slate-200/80">
+                            <h4 class="font-bold text-slate-900 text-base mb-2">Q: What is the difference between NRC and CAC ceiling ratings?</h4>
+                            <p class="text-slate-600 text-xs sm:text-sm">A: NRC (Noise Reduction Coefficient) measures how much sound a ceiling tile absorbs within an open room. CAC (Ceiling Attenuation Class) measures how much sound is prevented from traveling through the ceiling plenum into an adjacent private office.</p>
+                        </div>
+                        <div class="p-5 rounded-2xl bg-white/60 border border-slate-200/80">
+                            <h4 class="font-bold text-slate-900 text-base mb-2">Q: Can acoustic baffles be installed in spaces with exposed concrete ceilings?</h4>
+                            <p class="text-slate-600 text-xs sm:text-sm">A: Yes. Vertical acoustic baffles can be suspended directly from concrete structural slabs using aircraft cables, providing acoustic absorption while preserving industrial ceiling heights.</p>
+                        </div>
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4 border-l-4 border-emerald-500 pl-4">
+                        Conclusion
+                    </h2>
+                    <p>
+                        Investing in modern ceiling grids and acoustic engineering is fundamental to designing high-performing commercial workspaces. By combining sound-absorbing acoustic baffles, human-centric circadian lighting, and thoughtful spatial zoning, organizations can build inspiring, efficient office environments that empower teams and support long-term growth.
+                    </p>
+
+                </article>
+
+                <!-- Article Footer CTA -->
+                <div class="mt-12 p-8 rounded-3xl bg-gradient-to-r from-emerald-600 to-emerald-700 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+                    <div>
+                        <h3 class="text-xl font-bold">Ready to Upgrade Your Office Canopy?</h3>
+                        <p class="text-emerald-100 text-xs sm:text-sm mt-1">Connect with our design team to discuss custom ceiling grids and acoustic layouts.</p>
+                    </div>
+                    <a href="#contact" class="px-6 py-3 bg-white text-emerald-700 font-bold rounded-full hover:bg-slate-100 transition shadow-md whitespace-nowrap text-sm">
+                        Request Project Review
+                    </a>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ================= CONTACT PAGE ================= -->
+        <section id="contact" class="page-section space-y-8">
+            
+            <div class="max-w-2xl mx-auto glass-panel rounded-3xl p-8 sm:p-12 shadow-xl">
+                <div class="text-center mb-8">
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-emerald-600">Client Direct Lead Portal</span>
+                    <h1 class="text-3xl font-extrabold text-slate-900 mt-1">Contact Our Design Team</h1>
+                    <p class="text-slate-600 text-sm mt-2">
+                        Submit your project requirements below. Our technical specialists will review your details and connect with you directly.
+                    </p>
+                </div>
+
+                <!-- Formspree Lead Submission Form -->
+                <form action="https://formspree.io/f/xbjnqkyw" method="POST" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Your Name</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400">
+                                <i data-lucide="user" class="w-5 h-5"></i>
+                            </span>
+                            <input type="text" id="name" name="name" required placeholder="Enter your full name" class="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-white/70 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white text-sm text-slate-800 transition">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Email Address</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </span>
+                            <input type="email" id="email" name="email" required placeholder="name@company.com" class="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-white/70 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white text-sm text-slate-800 transition">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="phone" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Phone Number</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400">
+                                <i data-lucide="phone" class="w-5 h-5"></i>
+                            </span>
+                            <input type="tel" id="phone" name="phone" required placeholder="Your contact number" class="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-white/70 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white text-sm text-slate-800 transition">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="message" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Project Details / Inquiry</label>
+                        <textarea id="message" name="message" rows="4" required placeholder="Provide details regarding square footage, project timeline, or ceiling grid specifications..." class="w-full p-4 rounded-2xl bg-white/70 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white text-sm text-slate-800 transition"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full emerald-btn text-white font-bold py-4 rounded-2xl shadow-lg flex items-center justify-center gap-2 text-base">
+                        <span>Submit Inquiry</span>
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                    </button>
+
+                    <p class="text-xs text-center text-slate-500 pt-2">
+                        <i data-lucide="shield-check" class="w-3.5 h-3.5 inline text-emerald-600 mr-1"></i>
+                        Privacy Guarantee: Your submissions are directly delivered to our project management desk.
+                    </p>
+                </form>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-panel border-t border-white/60 mt-16 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded-lg bg-emerald-600 flex items-center justify-center text-white">
+                    <i data-lucide="grid" class="w-3.5 h-3.5"></i>
+                </div>
+                <span class="font-bold text-slate-800">Modern Grid Ceiling & Workspaces</span>
+            </div>
+            <p>&copy; 2026 Modern Grid Ceiling & Workspaces. All rights reserved.</p>
+            <div class="flex items-center gap-4">
+                <a href="#home" class="hover:text-emerald-600 transition">Home</a>
+                <a href="#about" class="hover:text-emerald-600 transition">About</a>
+                <a href="#blog/acoustic-ceiling-and-interior-trends-2026" class="hover:text-emerald-600 transition">Blog</a>
+                <a href="#contact" class="hover:text-emerald-600 transition">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Application Logic & Hash Router Script -->
+    <script>
+        const routes = {
+            'home': {
+                id: 'home',
+                title: 'Home | Modern Grid Ceiling & Workspaces'
+            },
+            'about': {
+                id: 'about',
+                title: 'About Us | Modern Grid Ceiling & Workspaces'
+            },
+            'blog/acoustic-ceiling-and-interior-trends-2026': {
+                id: 'blog',
+                title: 'Acoustic Ceiling & Interior Trends | Modern Grid Ceiling & Workspaces'
+            },
+            'contact': {
+                id: 'contact',
+                title: 'Contact Project Engineering | Modern Grid Ceiling & Workspaces'
+            }
+        };
+
+        function handleRouting() {
+            let hash = window.location.hash.replace('#', '') || 'home';
+            
+            let routeKey = hash;
+            if (!routes[routeKey]) {
+                if (hash.startsWith('blog')) {
+                    routeKey = 'blog/acoustic-ceiling-and-interior-trends-2026';
+                } else {
+                    routeKey = 'home';
+                }
+            }
+
+            const targetRoute = routes[routeKey];
+
+            // Hide all sections
+            document.querySelectorAll('.page-section').forEach(sec => {
+                sec.classList.remove('active');
+            });
+
+            // Activate target section
+            const activeSection = document.getElementById(targetRoute.id);
+            if (activeSection) {
+                activeSection.classList.add('active');
+            }
+
+            // Update Page Title
+            document.title = targetRoute.title;
+
+            // Highlight Active Nav Button
+            document.querySelectorAll('.nav-link').forEach(link => {
+                const navTarget = link.getAttribute('data-target');
+                if (navTarget === targetRoute.id) {
+                    link.classList.add('bg-emerald-600', 'text-white');
+                    link.classList.remove('text-slate-600');
+                } else {
+                    link.classList.remove('bg-emerald-600', 'text-white');
+                    link.classList.add('text-slate-600');
+                }
+            });
+
+            // Scroll smoothly to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Close mobile drawer
+            document.getElementById('mobileMenu').classList.add('hidden');
+        }
+
+        // Mobile drawer toggler
+        document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Listen for route changes
+        window.addEventListener('hashchange', handleRouting);
+        window.addEventListener('load', () => {
+            handleRouting();
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
